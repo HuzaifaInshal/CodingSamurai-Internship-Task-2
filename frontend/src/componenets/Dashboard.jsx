@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const Dashboard = () => {
   const [over,setOver] = useState(false)
+  const [over2,setOver2] = useState(false)
+  const [show,setShow] = useState({})
   const [put,setPut] = useState(false)
   const [lits,setLits] = useState([])
   const [namee,setName] = useState('')
@@ -161,6 +163,24 @@ const Dashboard = () => {
       }
     }
 
+    const showTask =(title,description,mark,priority,createdAt )=>{
+      let newMark
+      if(mark){
+         newMark = 'Pending'
+      }else{  newMark = 'Completed'}
+
+      let final
+      if(priority === 3 ){final="High"}
+        else if(priority === 2 ){final="Normal"}
+        else if(priority ===1){final= "Low" }
+        else{final= "Normal" }
+
+      setShow({
+        title,description,mark:newMark,priority:final,createdAt:createdAt.substring(0,10)
+      })
+      setOver2(true)
+    }
+
     useEffect(()=>{
       callResponse()
     },[])
@@ -185,6 +205,22 @@ const Dashboard = () => {
       <button type='submit' className='btn2' >{!put ? "Add Task" : "Update Task"}</button>
       </form>
     </div> : ''}
+    {over2 ? 
+      <div className='over'>
+        <div className="shower">
+          <div className="closebtn" onClick={()=>setOver2(false)}>x</div>
+          <h1>{show.title}</h1>
+          <div className="flexrow">
+            <p className='p1'>{show.mark}</p>
+            -
+            <p className='p2'>{show.priority} Priority</p>
+            -
+            <p className='p3'>Created at: {show.createdAt}</p>
+          </div>
+          <p className='p4'>{show.description}</p>
+        </div>
+      </div>
+    : ''}
       <div className="containerr">
         <div className="nav2">
         <h2>Welcome {name}</h2>
@@ -204,11 +240,12 @@ const Dashboard = () => {
         </div>
         <div className="tasks-holder">
           {lits.length !== 0 ? lits.map((task)=>(
-            <div className='tasks-holder-main' key={task._id}>
+            <div className='tasks-holder-main' key={task._id} onClick={()=>showTask(task.title,task.description,task.mark,task.priority,task.createdAt)}>
               <div className="tasks-holder-1">
                 <h2 className='h2'>{task.title}</h2>
                 <div style={{display:"flex",flexDirection:"row",gap:"10px"}}>
                 <p className='p-mark'>{task.mark ? "Completed" : "Pending"}</p>
+                -
                 <p className='p-mark' style={{color:"green"}}>{task.priority === 3 ? "High Priority" : (task.priority === 2 ? "Normal Priority" : "Low Priority")}</p>
                 </div>
                 <p className='desc'>{task.description}</p>
