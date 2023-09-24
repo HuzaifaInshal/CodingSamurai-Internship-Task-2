@@ -31,7 +31,7 @@ const Dashboard = () => {
 
       const callResponse =async()=>{
       try {
-        const response = await axios.get('http://localhost:5000/api/task/', {
+        const response = await axios.get('/api/task/', {
           headers:{
             'Authorization': `Bearer ${token}`
           }
@@ -62,7 +62,7 @@ const Dashboard = () => {
           mark:"false",
           priority:final
         }
-        const response = await axios.post('http://localhost:5000/api/task/',object,{
+        const response = await axios.post('/api/task/',object,{
           headers:{
             'Authorization': `Bearer ${token}`
           }
@@ -105,7 +105,7 @@ const Dashboard = () => {
 
     const handleDel = async(id)=>{
       try {
-        const response = await axios.delete(`http://localhost:5000/api/task/${id}`,{
+        const response = await axios.delete(`/api/task/${id}`,{
           headers:{
             'Authorization': `Bearer ${token}`
           }
@@ -136,7 +136,7 @@ const Dashboard = () => {
           mark:"false",
           priority:final
         }
-        const response = await axios.put(`http://localhost:5000/api/task/${globalId}`,object,{
+        const response = await axios.put(`/api/task/${globalId}`,object,{
           headers:{
             'Authorization': `Bearer ${token}`
           }})
@@ -150,7 +150,7 @@ const Dashboard = () => {
 
     const markdone = async(id)=>{
       try {
-        const response = await axios.put(`http://localhost:5000/api/task/mark/${id}`,null,{
+        const response = await axios.put(`/api/task/mark/${id}`,null,{
           headers:{
             'Authorization': `Bearer ${token}`
 

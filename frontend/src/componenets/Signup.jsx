@@ -14,7 +14,7 @@ const Signup = () => {
     const handleSignup = async (e)=>{
         e.preventDefault();
         try {
-        const response = await axios.post('http://localhost:5000/api/user/signup', { name,bio,email, password });
+        const response = await axios.post('/api/user/signup', { name,bio,email, password });
         const obj = {
             token:response.data.token,
             name:response.data.name }
