@@ -33,7 +33,7 @@ const Dashboard = () => {
 
       const callResponse =async()=>{
       try {
-        const response = await axios.get('/api/task/', {
+        const response = await axios.get('http://localhost:5000/api/task/', {
           headers:{
             'Authorization': `Bearer ${token}`
           }
@@ -251,9 +251,9 @@ const Dashboard = () => {
                 <p className='desc'>{task.description}</p>
               </div>
               <div className="tasks-holder-2">
-                <button className="del" onClick={()=>handleDel(task._id)}>Delete</button>
-                <button className="upd" onClick={()=>handleUpd(task._id,task.title,task.description,task.priority,task.mark)}>Update</button>
-                <button className='mark' onClick={()=>markdone(task._id)}>Mark as {!task.mark ? "Done" : "Pending"}</button>
+                <button className="del" onClick={(e)=> {e.stopPropagation(); handleDel(task._id)}}>Delete</button>
+                <button className="upd" onClick={(e)=> {e.stopPropagation(); handleUpd(task._id,task.title,task.description,task.priority,task.mark)}}>Update</button>
+                <button className='mark' onClick={(e)=> {e.stopPropagation(); markdone(task._id)}}>Mark as {!task.mark ? "Done" : "Pending"}</button>
               </div>
             </div>
           )) : <div className='centre'>No taks right now...</div>}

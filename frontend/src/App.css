@@ -173,10 +173,9 @@ button:hover{
   padding: 20px;
   border: solid 1px black;
   cursor: pointer;
+  border-radius: 25px;
 }
-button{
-  z-index: 5000;
-}
+
 .tasks-holder-main:hover{
   background-color: antiquewhite;
 }
@@ -302,6 +301,7 @@ select{
   width: 60vw;
   height: 60vh;
   padding: 6%;
+  border-radius: 25px;
 }
 .flexrow{
   display: flex;
