@@ -173,7 +173,6 @@ button:hover{
   padding: 20px;
   border: solid 1px black;
   cursor: pointer;
-  border-radius: 25px;
 }
 
 .tasks-holder-main:hover{
