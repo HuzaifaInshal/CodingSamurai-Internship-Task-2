@@ -22,10 +22,8 @@ app.use('/api/task',require('./routes/taskRoutes'))
 
 app.use(errorHandler)
 
-// app.use(express.static(path.join(__dirname,'./frontend/dist/')))
-app.use(express.static(path.join('./frontend/dist/')))
-// app.get('*',(req,res)=>res.sendFile(path.resolve(__dirname,'./','frontend','dist','index.html')))
-app.get('*',(req,res)=>res.sendFile(path.resolve('./','frontend','dist','index.html')))
+app.use(express.static(path.join(__dirname,'./frontend/dist/')))
+app.get('*',(req,res)=>res.sendFile(path.resolve(__dirname,'./','frontend','dist','index.html')))
 
 
 app.listen(port,()=>console.log(`Server is listening at Port ${port}`))
