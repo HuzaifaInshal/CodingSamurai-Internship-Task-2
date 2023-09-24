@@ -33,7 +33,7 @@ const Dashboard = () => {
 
       const callResponse =async()=>{
       try {
-        const response = await axios.get('http://localhost:5000/api/task/', {
+        const response = await axios.get('/api/task/', {
           headers:{
             'Authorization': `Bearer ${token}`
           }
